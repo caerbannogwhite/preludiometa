@@ -1,5 +1,7 @@
 package preludiometa
 
+const PRELUDIO_INSTRUCTION_SIZE = 6
+
 type OPCODE uint8
 type PARAM1 uint8
 
@@ -134,21 +136,27 @@ const (
 	SYMBOL_DURATION_YEAR              = "years"
 )
 
-const PRELUDIO_INSTRUCTION_SIZE = 6
-
-type LOG_TYPE uint8
+type JustificationType uint8
 
 const (
-	LOG_INFO LOG_TYPE = iota
+	JUSTIFY_LEFT JustificationType = iota
+	JUSTIFY_RIGHT
+	JUSTIFY_CENTER
+)
+
+type LogType uint8
+
+const (
+	LOG_INFO LogType = iota
 	LOG_WARNING
 	LOG_ERROR
 	LOG_DEBUG
 )
 
 type LogEnty struct {
-	LogType LOG_TYPE `json:"logType"`
-	Level   uint8    `json:"level"`
-	Message string   `json:"message"`
+	LogType LogType `json:"logType"`
+	Level   uint8   `json:"level"`
+	Message string  `json:"message"`
 }
 
 type Columnar struct {

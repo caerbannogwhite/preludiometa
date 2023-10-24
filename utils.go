@@ -85,3 +85,27 @@ func (op OPCODE) ToCodeString() string {
 		return "UNKNOWN OPERATOR"
 	}
 }
+
+// Get the default justification for a given base type
+func (bt BaseType) GetDefaultJustification() JustificationType {
+	switch bt {
+	case NullType:
+		return JUSTIFY_RIGHT
+	case BoolType:
+		return JUSTIFY_RIGHT
+	case IntType:
+		return JUSTIFY_RIGHT
+	case Int64Type:
+		return JUSTIFY_RIGHT
+	case Float64Type:
+		return JUSTIFY_RIGHT
+	case StringType:
+		return JUSTIFY_LEFT
+	case TimeType:
+		return JUSTIFY_RIGHT
+	case DurationType:
+		return JUSTIFY_RIGHT
+	default:
+		return JUSTIFY_LEFT
+	}
+}
